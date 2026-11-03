@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Max Pol - n8n &amp; AI automation engineer</title>
+<meta name="description" content="Three working systems: donation page with QR rails, n8n content machine, and a second brain on Hermes. Live links, real numbers.">
+<style>
+  :root{
+    --bg:#0b0d10; --panel:#12161b; --panel2:#171c23; --line:#232a33;
+    --text:#e8edf3; --muted:#93a1b1; --dim:#6b7787;
+    --accent:#59d98b; --accent2:#5aa9ff; --warn:#f2b95c;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0e1216,#0b0d10)}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+  .brand{display:flex;flex-direction:column}
+  .brand b{font-size:17px;letter-spacing:.2px}
+  .brand span{font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+  nav{display:flex;gap:18px;flex-wrap:wrap}
+  nav a{color:var(--muted);font-size:13.5px}
+  nav a:hover{color:var(--text);text-decoration:none}
+  .hero{padding:56px 0 40px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-size:clamp(28px,4.4vw,46px);line-height:1.12;margin:0 0 16px;letter-spacing:-.02em;max-width:19ch}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{font-size:17px;color:var(--muted);max-width:62ch;margin:0 0 26px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:9px;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--panel);color:var(--text)}
+  .btn:hover{text-decoration:none;border-color:#39424e}
+  .btn.primary{background:var(--accent);color:#07110b;border-color:transparent}
+  .btn.primary:hover{background:#6ee79c}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:34px 0 0}
+  .stat{background:var(--panel);padding:18px 20px}
+  .stat b{display:block;font-size:24px;letter-spacing:-.01em;font-family:var(--mono)}
+  .stat span{font-size:12.5px;color:var(--muted)}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  .case-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+  .num{font-family:var(--mono);font-size:12px;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+  h2{font-size:clamp(22px,3vw,30px);margin:0;letter-spacing:-.01em}
+  .case-sub{color:var(--muted);max-width:70ch;margin:0 0 26px;font-size:15.5px}
+  .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .panel h3{margin:0 0 12px;font-size:14px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--dim);font-weight:600}
+  ul.clean{list-style:none;margin:0;padding:0}
+  ul.clean li{position:relative;padding-left:20px;margin-bottom:9px;font-size:14.5px;color:#cfd7e0}
+  ul.clean li:before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--accent);opacity:.75}
+  ul.clean li b{color:#fff;font-weight:600}
+  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel2);position:relative}
+  .shot img{display:block;width:100%;height:auto}
+  .shot figcaption{font-size:11.5px;color:var(--dim);padding:7px 9px;font-family:var(--mono);border-top:1px solid var(--line)}
+  figure{margin:0}
+  .meter{display:grid;gap:10px;margin-top:6px}
+  .row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);gap:12px;border-bottom:1px dashed #222932;padding-bottom:7px}
+  .row b{color:var(--text);font-family:var(--mono);font-weight:500}
+  .tagline{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:#0f1318;border-radius:99px;padding:4px 10px}
+  .live{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid #1f3a2a;background:#0e1a13;border-radius:99px;padding:4px 11px;margin-bottom:14px}
+  .live i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;box-shadow:0 0 0 3px rgba(89,217,139,.15)}
+  .note{font-size:13px;color:var(--dim);border-left:2px solid var(--line);padding-left:12px;margin-top:16px}
+  .demorow{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:start;margin-top:28px;padding-top:26px;border-top:1px solid var(--line)}
+  .demo{margin:0}
+  .demo video{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:#000}
+  .demo figcaption{font-size:12px;color:var(--dim);font-family:var(--mono);margin-top:8px}
+  .demotext h3{margin:0 0 12px;font-size:14px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--dim);font-weight:600}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:stretch;margin-top:4px}
+  .step{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 13px;font-size:13px;color:#c9d2dc}
+  .step b{display:block;font-family:var(--mono);font-size:11px;color:var(--accent2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+  footer{border-top:1px solid var(--line);padding:40px 0 60px;color:var(--muted);font-size:14px}
+  .contacts{display:flex;gap:22px;flex-wrap:wrap;margin:14px 0 18px}
+  .contacts a{font-family:var(--mono);font-size:13.5px}
+  .fine{font-size:12px;color:var(--dim);font-family:var(--mono)}
+  @media (max-width:820px){
+    .grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .shots{grid-template-columns:repeat(2,1fr)}
+    .flow{grid-template-columns:repeat(2,1fr)}
+    .demorow{grid-template-columns:1fr}
+    .demo{max-width:300px}
+    .hero{padding:36px 0 28px}
+    nav{display:none}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .stat b{transition:color .2s}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <div class="brand">
+      <b>Max Pol</b>
+      <span>n8n &amp; AI automation engineer - Manila, PH</span>
+    </div>
+    <nav>
+      <a href="#case-1">Payments + QR</a>
+      <a href="#case-2">Content machine</a>
+      <a href="#case-3">Second brain</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <div class="kicker">Portfolio - three systems that run today</div>
+  <h1>I build automation that pays for itself, <em>not demos</em>.</h1>
+  <p class="lede">
+    Payments page that takes money from four rails. Content machine that turns one trip into a month of posts.
+    Second brain that keeps six AI agents and a 1,600-note knowledge base on the same page.
+    Everything below is live or reproducible - links, dates and counts are real.
+  </p>
+  <div class="cta">
+    <a class="btn primary" href="#case-1">See the three cases</a>
+    <a class="btn" href="https://maxpol-ph.github.io/donate/" target="_blank" rel="noopener">Live system: donate page</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>4</b><span>payment rails on one page (card, GCash, Maya, PayPal)</span></div>
+    <div class="stat"><b>271</b><span>post-ready entries from one shoot, mapped 1:1 to files</span></div>
+    <div class="stat"><b>6</b><span>social platforms fed by one n8n pipeline</span></div>
+    <div class="stat"><b>1640</b><span>notes in the knowledge base six agents share</span></div>
+  </div>
+</div>
+
+<section id="case-1">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="num">CASE 01</span>
+      <h2>Donations and QR payments</h2>
+    </div>
+    <p class="case-sub">
+      A streamer needs to take money from two very different audiences: local wallets in the Philippines
+      (GCash, Maya) and cards from abroad. Each audience punishes friction differently, so the page has to
+      switch rails without a second thought from the sender.
+    </p>
+
+    <div class="grid">
+      <div>
+        <div class="live"><i></i>LIVE - maxpol-ph.github.io/donate</div>
+        <ul class="clean">
+          <li><b>One page, four rails.</b> Card/Wise, GCash, Maya, PayPal - each with its own QR and its own instructions, so a local donor never sees a foreign form.</li>
+          <li><b>Currency switch in place.</b> PHP and USD amount grids recalculate on the spot; the presets change with the currency instead of staying in pesos.</li>
+          <li><b>Deep links per rail.</b> <code>?pay=gcash</code>, <code>?pay=maya</code>, <code>?pay=wise</code> open the page already on the right tab - used for Twitch panels and per-platform links.</li>
+          <li><b>Zero backend.</b> Static HTML + JS on GitHub Pages, QR images generated locally. Nothing to host, nothing to break, no card data anywhere near the page.</li>
+          <li><b>Distribution wired in.</b> 9 Twitch panels, Patreon with 3 tiers, Wise link verified with 22 currencies - the page is the middle of a funnel, not an orphan.</li>
+        </ul>
+        <div class="tagline">
+          <span class="tag">static HTML/JS</span><span class="tag">GitHub Pages</span>
+          <span class="tag">Wise</span><span class="tag">GCash / Maya</span><span class="tag">PayPal</span>
+          <span class="tag">QR generation</span><span class="tag">CDP record</span>
+        </div>
+        <p class="note">
+          Proof without trusting me: <a href="https://maxpol-ph.github.io/donate/" target="_blank" rel="noopener">open the page</a>,
+          or watch the 17 s mobile capture in <code>donates-demo/donate-demo-mobile-960x1800.mp4</code>
+          (480x900 viewport at 2x, recorded through Chrome DevTools Protocol, not screen capture).
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Screen proof - real frames</h3>
+        <div class="shots">
+          <figure class="shot"><img src="assets/donate-t1.jpg" alt="Amount selected in pesos, converted to dollars"><figcaption>01 sum</figcaption></figure>
+          <figure class="shot"><img src="assets/donate-t6.jpg" alt="Currency switch to USD changes the amount grid"><figcaption>02 currency</figcaption></figure>
+          <figure class="shot"><img src="assets/donate-t12.jpg" alt="Scroll to payment rails with QR"><figcaption>03 QR rails</figcaption></figure>
+          <figure class="shot"><img src="assets/donate-t15.jpg" alt="Footer with exchange rate"><figcaption>04 footer</figcaption></figure>
+        </div>
+        <div class="meter" style="margin-top:18px">
+          <div class="row"><span>Viewport / output</span><b>480x900 @2x -&gt; 960x1800</b></div>
+          <div class="row"><span>Capture length</span><b>17.4 s, 30 fps</b></div>
+          <div class="row"><span>Black frames in output</span><b>0</b></div>
+          <div class="row"><span>Backend services</span><b>none</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demorow">
+      <figure class="demo">
+        <video src="assets/donate-demo.mp4" poster="assets/donate-poster.jpg" controls muted playsinline preload="metadata"></video>
+        <figcaption>17.4 s - the whole flow: pick an amount, switch currency, scan the wallet QR.</figcaption>
+      </figure>
+      <div class="demotext">
+        <h3>How the demo was made (screen recordings lie)</h3>
+        <ul class="clean">
+          <li><b>Recorded from the browser, not the screen.</b> Chrome headless + DevTools Protocol, viewport 480x900 at 2x, so every frame is exactly 960x1800 and the text stays retina-crisp.</li>
+          <li><b>Moves are code, not a shaky hand.</b> Scroll easing, a cursor dot and tap ripples are scripted, so the capture is repeatable frame to frame.</li>
+          <li><b>Checked by machine.</b> A verify script prints page state after each step; ffmpeg blackdetect finds no black segments in the output.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="case-2">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="num">CASE 02</span>
+      <h2>Content machine: one shoot, a month of posts</h2>
+    </div>
+    <p class="case-sub">
+      A four-day trip produced 282 files. Hand-posting that is weeks of work. The machine takes a folder of
+      raw media, pairs every file with platform-specific text, and publishes on a schedule across six networks -
+      with the queue readable and stoppable at any step.
+    </p>
+
+    <div class="flow">
+      <div class="step"><b>1 input</b>Raw folder + post bank: 14 locations, 180 photos, 91 videos.</div>
+      <div class="step"><b>2 match</b>One row per file in n8n Data Tables, exact filename match, 0 orphans both ways.</div>
+      <div class="step"><b>3 text</b>Per-platform copy: IG 300-600, FB 400-700, Threads 200-500, TikTok 40-150, Bluesky 100-300, Shorts 60-220.</div>
+      <div class="step"><b>4 publish</b>8-10 posts/day from the queue through n8n, two workflows (photo / video), launch manual.</div>
+    </div>
+
+    <div class="grid" style="margin-top:26px">
+      <div class="panel">
+        <h3>What is actually verified</h3>
+        <div class="meter">
+          <div class="row"><span>Post-ready entries</span><b>271 (180 photo + 91 video)</b></div>
+          <div class="row"><span>Rows without a file / files without a row</span><b>0 / 0</b></div>
+          <div class="row"><span>Character-limit violations</span><b>0 (checked by script)</b></div>
+          <div class="row"><span>Queue length at 8-10 posts/day</span><b>~1 month</b></div>
+          <div class="row"><span>Manual rework to publish a day</span><b>none</b></div>
+        </div>
+        <p class="note">
+          The boring part is the value: strict filename matching means a re-named or duplicated file fails loudly
+          instead of posting the wrong photo with the wrong caption. Duplicates and private shots are moved out of
+          the set before anything reaches the queue.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Video half: AI director</h3>
+        <ul class="clean">
+          <li><b>Raw iPhone 4K HEVC 10-bit HDR</b> in, vertical 1080x1920 out.</li>
+          <li><b>One command per reel:</b> probe, technical filter (blur, black frames, static), edit plan, assembly, export.</li>
+          <li><b>Independent check after export:</b> ffprobe duration, resolution, real audio level - exit code 0 proves nothing.</li>
+          <li><b>Quality measured:</b> VMAF 97-98.8 against source; 30 s reel renders in ~66 s.</li>
+          <li><b>Music library:</b> 141 tracks sorted by style.</li>
+        </ul>
+        <div class="tagline">
+          <span class="tag">n8n</span><span class="tag">Data Tables</span><span class="tag">ffmpeg</span>
+          <span class="tag">FilmCraft</span><span class="tag">Whisper</span><span class="tag">Apple Vision</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="case-3">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="num">CASE 03</span>
+      <h2>Second brain: six agents, one source of truth</h2>
+    </div>
+    <p class="case-sub">
+      The problem is not "where to store notes". It is that several AI agents, each with its own profile and its
+      own job, start inventing facts and priorities. The fix is structure plus a single hierarchy file every agent
+      reads before touching a task.
+    </p>
+
+    <div class="grid">
+      <div>
+        <ul class="clean">
+          <li><b>One hierarchy file.</b> Mission, money target, projects, and rules for agents in a single note: what serves the mission, what is junk, what can be delegated.</li>
+          <li><b>Six isolated agent profiles.</b> Mentoring, inbox, farm, jobs, n8n, and a separate person's profile - separate memories, separate skills, no cross-talk.</li>
+          <li><b>60 skills as procedures.</b> Each recurring job is written down once (planning, agents, board rules) instead of re-derived every session.</li>
+          <li><b>Board with a mission filter.</b> Every card carries an estimate: mission / money / support / junk. 80% of output comes from the first two, the rest is cut.</li>
+          <li><b>1640 notes, 119 folders</b> in a plain-Markdown vault that any tool can read - no vendor lock, no export step.</li>
+          <li><b>Scheduled work.</b> Cron agents post, sweep and report on a timer; the human reviews the result, not the process.</li>
+        </ul>
+        <p class="note">
+          Design rule I hold: the model may be wrong, the structure must not be. If an agent cannot point to the note
+          it acted on, the note does not exist.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Shape of the system</h3>
+        <div class="meter">
+          <div class="row"><span>Notes in vault</span><b>1640</b></div>
+          <div class="row"><span>Top-level sections</span><b>9</b></div>
+          <div class="row"><span>Agent profiles</span><b>6</b></div>
+          <div class="row"><span>Skills / procedures</span><b>60</b></div>
+          <div class="row"><span>Source of truth for priorities</span><b>1 file</b></div>
+          <div class="row"><span>Storage format</span><b>Markdown on disk</b></div>
+        </div>
+        <div class="tagline">
+          <span class="tag">Hermes Agent</span><span class="tag">Obsidian</span>
+          <span class="tag">cron</span><span class="tag">MCP</span><span class="tag">local files</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="kicker">Available for automation work</div>
+    <p style="margin:0 0 4px;font-size:17px;color:var(--text);max-width:56ch">
+      n8n workflows, payment and donation setups, content pipelines, self-hosted AI systems.
+      Tell me the process you hate and I will show you the version where it runs without you.
+    </p>
+    <div class="contacts">
+      <a href="https://www.upwork.com/freelancers/~01c990aa21fcaea546" target="_blank" rel="noopener">Upwork</a>
+      <a href="https://github.com/maxpol-ph" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/company/automate-n8n/posts/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://maxpol-ph.github.io/donate/" target="_blank" rel="noopener">Donate page (live demo)</a>
+    </div>
+    <div class="fine">Figures as of November 2026 - pulled from the systems themselves, not from a deck.</div>
+  </div>
+</footer>
+
+</body>
+</html>
