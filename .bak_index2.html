@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Max Pol - n8n &amp; AI automation engineer</title>
+<meta name="description" content="Three working systems: donation page with QR rails, n8n content machine, and a second brain on Hermes. Live links, real numbers.">
+<style>
+  :root{
+    --bg:#0b0d10; --panel:#12161b; --panel2:#171c23; --line:#232a33;
+    --text:#e8edf3; --muted:#93a1b1; --dim:#6b7787;
+    --accent:#59d98b; --accent2:#5aa9ff; --warn:#f2b95c;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0e1216,#0b0d10)}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+  .brand{display:flex;flex-direction:column}
+  .brand b{font-size:17px;letter-spacing:.2px}
+  .brand span{font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+  nav{display:flex;gap:18px;flex-wrap:wrap}
+  nav a{color:var(--muted);font-size:13.5px}
+  nav a:hover{color:var(--text);text-decoration:none}
+  .hero{padding:56px 0 40px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-size:clamp(28px,4.4vw,46px);line-height:1.12;margin:0 0 16px;letter-spacing:-.02em;max-width:19ch}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{font-size:17px;color:var(--muted);max-width:62ch;margin:0 0 26px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:9px;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--panel);color:var(--text)}
+  .btn:hover{text-decoration:none;border-color:#39424e}
+  .btn.primary{background:var(--accent);color:#07110b;border-color:transparent}
+  .btn.primary:hover{background:#6ee79c}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:34px 0 0}
+  .stat{background:var(--panel);padding:18px 20px}
+  .stat b{display:block;font-size:24px;letter-spacing:-.01em;font-family:var(--mono)}
+  .stat span{font-size:12.5px;color:var(--muted)}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  .case-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+  .num{font-family:var(--mono);font-size:12px;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+  h2{font-size:clamp(22px,3vw,30px);margin:0;letter-spacing:-.01em}
+  .case-sub{color:var(--muted);max-width:70ch;margin:0 0 26px;font-size:15.5px}
+  .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .panel h3{margin:0 0 12px;font-size:14px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--dim);font-weight:600}
+  ul.clean{list-style:none;margin:0;padding:0}
+  ul.clean li{position:relative;padding-left:20px;margin-bottom:9px;font-size:14.5px;color:#cfd7e0}
+  ul.clean li:before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--accent);opacity:.75}
+  ul.clean li b{color:#fff;font-weight:600}
+  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel2);position:relative}
+  .shot img{display:block;width:100%;height:auto}
+  .shot figcaption{font-size:11.5px;color:var(--dim);padding:7px 9px;font-family:var(--mono);border-top:1px solid var(--line)}
+  figure{margin:0}
+  .meter{display:grid;gap:10px;margin-top:6px}
+  .row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);gap:12px;border-bottom:1px dashed #222932;padding-bottom:7px}
+  .row b{color:var(--text);font-family:var(--mono);font-weight:500}
+  .tagline{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:#0f1318;border-radius:99px;padding:4px 10px}
+  .live{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid #1f3a2a;background:#0e1a13;border-radius:99px;padding:4px 11px;margin-bottom:14px}
+  .live i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;box-shadow:0 0 0 3px rgba(89,217,139,.15)}
+  .note{font-size:13px;color:var(--dim);border-left:2px solid var(--line);padding-left:12px;margin-top:16px}
+  .demorow{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:start;margin-top:28px;padding-top:26px;border-top:1px solid var(--line)}
+  .demo{margin:0}
+  .demo video{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:#000}
+  .demo figcaption{font-size:12px;color:var(--dim);font-family:var(--mono);margin-top:8px}
+  .demotext h3{margin:0 0 12px;font-size:14px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--dim);font-weight:600}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:stretch;margin-top:4px}
+  .step{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 13px;font-size:13px;color:#c9d2dc}
+  .step b{display:block;font-family:var(--mono);font-size:11px;color:var(--accent2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+  footer{border-top:1px solid var(--line);padding:40px 0 60px;color:var(--muted);font-size:14px}
+  .contacts{display:flex;gap:22px;flex-wrap:wrap;margin:14px 0 18px}
+  .contacts a{font-family:var(--mono);font-size:13.5px}
+  .fine{font-size:12px;color:var(--dim);font-family:var(--mono)}
+  @media (max-width:820px){
+    .grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .shots{grid-template-columns:repeat(2,1fr)}
+    .flow{grid-template-columns:repeat(2,1fr)}
+    .demorow{grid-template-columns:1fr}
+    .demo{max-width:300px}
+    .hero{padding:36px 0 28px}
+    nav{display:none}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .stat b{transition:color .2s}
+  }
+
+  .socials{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 12px;max-width:760px}
+  .soc{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid var(--line);
+       border-radius:999px;font-family:var(--mono);font-size:12.5px;color:var(--text);text-decoration:none;
+       background:var(--card,#fff);transition:border-color .15s,transform .15s}
+  .soc svg{width:16px;height:16px;fill:currentColor;flex:0 0 16px}
+  .soc b{font-weight:400;color:var(--muted)}
+  .soc:hover{border-color:var(--text);transform:translateY(-1px)}
+  @media(max-width:520px){.soc b{display:none}.socials{gap:8px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <div class="brand">
+      <b>Max Pol</b>
+      <span>n8n &amp; AI automation engineer - Manila, PH</span>
+    </div>
+    <nav>
+      <a href="#case-1">Payments + QR</a>
+      <a href="#case-2">Content machine</a>
+      <a href="#case-3">Second brain</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <div class="kicker">Portfolio - three systems that run today</div>
+  <h1>I build automation that pays for itself, <em>not demos</em>.</h1>
+  <p class="lede">
+    Payments page that takes money from four rails. Content machine that turns one trip into a month of posts.
+    Second brain that keeps six AI agents and a 1,600-note knowledge base on the same page.
+    Everything below is live or reproducible - links, dates and counts are real.
+  </p>
+  <div class="cta">
+    <a class="btn primary" href="#case-1">See the three cases</a>
+    <a class="btn" href="https://maxpol-ph.github.io/donate/" target="_blank" rel="noopener">Live system: donate page</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>4</b><span>payment rails on one page (card, GCash, Maya, PayPal)</span></div>
+    <div class="stat"><b>271</b><span>post-ready entries from one shoot, mapped 1:1 to files</span></div>
+    <div class="stat"><b>6</b><span>social platforms fed by one n8n pipeline</span></div>
+    <div class="stat"><b>1640</b><span>notes in the knowledge base six agents share</span></div>
+  </div>
+</div>
+
+<section id="case-1">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="num">CASE 01</span>
+      <h2>Donations and QR payments</h2>
+    </div>
+    <p class="case-sub">
+      A streamer needs to take money from two very different audiences: local wallets in the Philippines
+      (GCash, Maya) and cards from abroad. Each audience punishes friction differently, so the page has to
+      switch rails without a second thought from the sender.
+    </p>
+
+    <div class="grid">
+      <div>
+        <div class="live"><i></i>LIVE - maxpol-ph.github.io/donate</div>
+        <ul class="clean">
+          <li><b>One page, four rails.</b> Card/Wise, GCash, Maya, PayPal - each with its own QR and its own instructions, so a local donor never sees a foreign form.</li>
+          <li><b>Currency switch in place.</b> PHP and USD amount grids recalculate on the spot; the presets change with the currency instead of staying in pesos.</li>
+          <li><b>Deep links per rail.</b> <code>?pay=gcash</code>, <code>?pay=maya</code>, <code>?pay=wise</code> open the page already on the right tab - used for Twitch panels and per-platform links.</li>
+          <li><b>Zero backend.</b> Static HTML + JS on GitHub Pages, QR images generated locally. Nothing to host, nothing to break, no card data anywhere near the page.</li>
+          <li><b>Distribution wired in.</b> 9 Twitch panels, Patreon with 3 tiers, Wise link verified with 22 currencies - the page is the middle of a funnel, not an orphan.</li>
+        </ul>
+        <div class="tagline">
+          <span class="tag">static HTML/JS</span><span class="tag">GitHub Pages</span>
+          <span class="tag">Wise</span><span class="tag">GCash / Maya</span><span class="tag">PayPal</span>
+          <span class="tag">QR generation</span><span class="tag">CDP record</span>
+        </div>
+        <p class="note">
+          Proof without trusting me: <a href="https://maxpol-ph.github.io/donate/" target="_blank" rel="noopener">open the page</a>,
+          or watch the 17 s mobile capture in <code>donates-demo/donate-demo-mobile-960x1800.mp4</code>
+          (480x900 viewport at 2x, recorded through Chrome DevTools Protocol, not screen capture).
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Screen proof - real frames</h3>
+        <div class="shots">
+          <figure class="shot"><img src="assets/donate-t1.jpg" alt="Amount selected in pesos, converted to dollars"><figcaption>01 sum</figcaption></figure>
+          <figure class="shot"><img src="assets/donate-t6.jpg" alt="Currency switch to USD changes the amount grid"><figcaption>02 currency</figcaption></figure>
+          <figure class="shot"><img src="assets/donate-t12.jpg" alt="Scroll to payment rails with QR"><figcaption>03 QR rails</figcaption></figure>
+          <figure class="shot"><img src="assets/donate-t15.jpg" alt="Footer with exchange rate"><figcaption>04 footer</figcaption></figure>
+        </div>
+        <div class="meter" style="margin-top:18px">
+          <div class="row"><span>Viewport / output</span><b>480x900 @2x -&gt; 960x1800</b></div>
+          <div class="row"><span>Capture length</span><b>17.4 s, 30 fps</b></div>
+          <div class="row"><span>Black frames in output</span><b>0</b></div>
+          <div class="row"><span>Backend services</span><b>none</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demorow">
+      <figure class="demo">
+        <video src="assets/donate-demo.mp4" poster="assets/donate-poster.jpg" controls muted playsinline preload="metadata"></video>
+        <figcaption>17.4 s - the whole flow: pick an amount, switch currency, scan the wallet QR.</figcaption>
+      </figure>
+      <div class="demotext">
+        <h3>How the demo was made (screen recordings lie)</h3>
+        <ul class="clean">
+          <li><b>Recorded from the browser, not the screen.</b> Chrome headless + DevTools Protocol, viewport 480x900 at 2x, so every frame is exactly 960x1800 and the text stays retina-crisp.</li>
+          <li><b>Moves are code, not a shaky hand.</b> Scroll easing, a cursor dot and tap ripples are scripted, so the capture is repeatable frame to frame.</li>
+          <li><b>Checked by machine.</b> A verify script prints page state after each step; ffmpeg blackdetect finds no black segments in the output.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="case-2">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="num">CASE 02</span>
+      <h2>Content machine: one shoot, a month of posts</h2>
+    </div>
+    <p class="case-sub">
+      A four-day trip produced 282 files. Hand-posting that is weeks of work. The machine takes a folder of
+      raw media, pairs every file with platform-specific text, and publishes on a schedule across six networks -
+      with the queue readable and stoppable at any step.
+    </p>
+
+    <div class="flow">
+      <div class="step"><b>1 input</b>Raw folder + post bank: 14 locations, 180 photos, 91 videos.</div>
+      <div class="step"><b>2 match</b>One row per file in n8n Data Tables, exact filename match, 0 orphans both ways.</div>
+      <div class="step"><b>3 text</b>Per-platform copy: IG 300-600, FB 400-700, Threads 200-500, TikTok 40-150, Bluesky 100-300, Shorts 60-220.</div>
+      <div class="step"><b>4 publish</b>8-10 posts/day from the queue through n8n, two workflows (photo / video), launch manual.</div>
+    </div>
+
+    <div class="grid" style="margin-top:26px">
+      <div class="panel">
+        <h3>What is actually verified</h3>
+        <div class="meter">
+          <div class="row"><span>Post-ready entries</span><b>271 (180 photo + 91 video)</b></div>
+          <div class="row"><span>Rows without a file / files without a row</span><b>0 / 0</b></div>
+          <div class="row"><span>Character-limit violations</span><b>0 (checked by script)</b></div>
+          <div class="row"><span>Queue length at 8-10 posts/day</span><b>~1 month</b></div>
+          <div class="row"><span>Manual rework to publish a day</span><b>none</b></div>
+        </div>
+        <p class="note">
+          The boring part is the value: strict filename matching means a re-named or duplicated file fails loudly
+          instead of posting the wrong photo with the wrong caption. Duplicates and private shots are moved out of
+          the set before anything reaches the queue.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Video half: AI director</h3>
+        <ul class="clean">
+          <li><b>Raw iPhone 4K HEVC 10-bit HDR</b> in, vertical 1080x1920 out.</li>
+          <li><b>One command per reel:</b> probe, technical filter (blur, black frames, static), edit plan, assembly, export.</li>
+          <li><b>Independent check after export:</b> ffprobe duration, resolution, real audio level - exit code 0 proves nothing.</li>
+          <li><b>Quality measured:</b> VMAF 97-98.8 against source; 30 s reel renders in ~66 s.</li>
+          <li><b>Music library:</b> 141 tracks sorted by style.</li>
+        </ul>
+        <div class="tagline">
+          <span class="tag">n8n</span><span class="tag">Data Tables</span><span class="tag">ffmpeg</span>
+          <span class="tag">FilmCraft</span><span class="tag">Whisper</span><span class="tag">Apple Vision</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="case-3">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="num">CASE 03</span>
+      <h2>Second brain: six agents, one source of truth</h2>
+    </div>
+    <p class="case-sub">
+      The problem is not "where to store notes". It is that several AI agents, each with its own profile and its
+      own job, start inventing facts and priorities. The fix is structure plus a single hierarchy file every agent
+      reads before touching a task.
+    </p>
+
+    <div class="grid">
+      <div>
+        <ul class="clean">
+          <li><b>One hierarchy file.</b> Mission, money target, projects, and rules for agents in a single note: what serves the mission, what is junk, what can be delegated.</li>
+          <li><b>Six isolated agent profiles.</b> Mentoring, inbox, farm, jobs, n8n, and a separate person's profile - separate memories, separate skills, no cross-talk.</li>
+          <li><b>60 skills as procedures.</b> Each recurring job is written down once (planning, agents, board rules) instead of re-derived every session.</li>
+          <li><b>Board with a mission filter.</b> Every card carries an estimate: mission / money / support / junk. 80% of output comes from the first two, the rest is cut.</li>
+          <li><b>1640 notes, 119 folders</b> in a plain-Markdown vault that any tool can read - no vendor lock, no export step.</li>
+          <li><b>Scheduled work.</b> Cron agents post, sweep and report on a timer; the human reviews the result, not the process.</li>
+        </ul>
+        <p class="note">
+          Design rule I hold: the model may be wrong, the structure must not be. If an agent cannot point to the note
+          it acted on, the note does not exist.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Shape of the system</h3>
+        <div class="meter">
+          <div class="row"><span>Notes in vault</span><b>1640</b></div>
+          <div class="row"><span>Top-level sections</span><b>9</b></div>
+          <div class="row"><span>Agent profiles</span><b>6</b></div>
+          <div class="row"><span>Skills / procedures</span><b>60</b></div>
+          <div class="row"><span>Source of truth for priorities</span><b>1 file</b></div>
+          <div class="row"><span>Storage format</span><b>Markdown on disk</b></div>
+        </div>
+        <div class="tagline">
+          <span class="tag">Hermes Agent</span><span class="tag">Obsidian</span>
+          <span class="tag">cron</span><span class="tag">MCP</span><span class="tag">local files</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="kicker">Available for automation work</div>
+    <p style="margin:0 0 4px;font-size:17px;color:var(--text);max-width:56ch">
+      n8n workflows, payment and donation setups, content pipelines, self-hosted AI systems.
+      Tell me the process you hate and I will show you the version where it runs without you.
+    </p>
+    <div class="socials">
+      <a class="soc" href="https://www.instagram.com/x_qubes/" target="_blank" rel="noopener" title="Instagram @x_qubes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg><span>Instagram</span><b>@x_qubes</b></a>
+      <a class="soc" href="https://www.threads.com/@x_qubes" target="_blank" rel="noopener" title="Threads @x_qubes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg><span>Threads</span><b>@x_qubes</b></a>
+      <a class="soc" href="https://www.tiktok.com/@x_qubes1" target="_blank" rel="noopener" title="TikTok @x_qubes1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg><span>TikTok</span><b>@x_qubes1</b></a>
+      <a class="soc" href="https://www.twitch.tv/x_qubes" target="_blank" rel="noopener" title="Twitch x_qubes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg><span>Twitch</span><b>x_qubes</b></a>
+      <a class="soc" href="https://bsky.app/profile/x-qube.bsky.social" target="_blank" rel="noopener" title="Bluesky x-qube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg><span>Bluesky</span><b>x-qube</b></a>
+      <a class="soc" href="https://www.upwork.com/freelancers/~01c990aa21fcaea546" target="_blank" rel="noopener" title="Upwork work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg><span>Upwork</span><b>work</b></a>
+      <a class="soc" href="https://www.linkedin.com/company/automate-n8n/posts/" target="_blank" rel="noopener" title="LinkedIn work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span><b>work</b></a>
+      <a class="soc" href="https://github.com/maxpol-ph" target="_blank" rel="noopener" title="GitHub code"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span><b>code</b></a>
+    </div>
+    <div class="fine">Figures as of November 2026 - pulled from the systems themselves, not from a deck.</div>
+  </div>
+</footer>
+
+</body>
+</html>
