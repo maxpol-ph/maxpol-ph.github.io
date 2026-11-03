@@ -146,6 +146,25 @@
   .appbtn span+span{display:flex;flex-direction:column;gap:1px}
   .appbtn b{font-size:12.5px;color:#e8edf3;font-weight:600}
   .appbtn i{font-style:normal;font-size:10.5px;color:#93a1b1}
+
+  /* соцсети Metro Greens - мягкий зелёный */
+  .mgsoc{margin:18px 0 4px;padding:14px;border-radius:12px;
+    border:1px solid rgba(127,224,163,.22);background:rgba(127,224,163,.06)}
+  .mgsh{font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+    color:#8fd9a8;margin-bottom:10px}
+  .mgsrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .mgs{display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:10px;
+    padding:9px 11px;border-radius:10px;text-decoration:none;
+    border:1px solid rgba(127,224,163,.16);background:rgba(127,224,163,.05);
+    transition:border-color .15s,background .15s,transform .15s}
+  .mgs:hover{border-color:rgba(127,224,163,.45);background:rgba(127,224,163,.12);transform:translateY(-1px)}
+  .mgsi{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+    background:rgba(127,224,163,.14)}
+  .mgsi svg{width:15px;height:15px;fill:#a9ecc0;display:block}
+  .mgst{display:flex;flex-direction:column;gap:1px;min-width:0;line-height:1.25}
+  .mgst b{font-size:12.5px;font-weight:600;color:#d8f5e2}
+  .mgst i{font-style:normal;font-size:11px;color:#8fd9a8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @media(max-width:560px){.mgsrow{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -397,6 +416,33 @@
           <a class="btn" href="https://play.google.com/store/apps/details?id=salesbox.me.metrogreens" target="_blank" rel="noopener">Get the app</a>
         </div>
 
+        <div class="mgsoc">
+          <div class="mgsh">Metro Greens online</div>
+          <div class="mgsrow">
+            <a class="mgs" href="https://metrogreens.ph" target="_blank" rel="noopener" title="metrogreens.ph">
+              <span class="mgsi">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-2.6a15.7 15.7 0 0 0-1.3-3.2A8 8 0 0 1 18.9 8ZM12 4.1c.7.9 1.2 2.1 1.6 3.9h-3.2c.4-1.8.9-3 1.6-3.9ZM4.3 14a8.2 8.2 0 0 1 0-4h3a25 25 0 0 0 0 4h-3Zm.8 2h2.6c.3 1.2.7 2.3 1.3 3.2A8 8 0 0 1 5.1 16Zm2.6-8H5.1a8 8 0 0 1 3.9-3.2A15.7 15.7 0 0 0 7.7 8Zm4.3 11.9c-.7-.9-1.2-2.1-1.6-3.9h3.2c-.4 1.8-.9 3-1.6 3.9ZM14 14h-4a22 22 0 0 1 0-4h4a22 22 0 0 1 0 4Zm.7 5.2c.6-.9 1-2 1.3-3.2h2.6a8 8 0 0 1-3.9 3.2ZM16.7 14a25 25 0 0 0 0-4h3a8.2 8.2 0 0 1 0 4h-3Z"/></svg>
+              </span><span class="mgst"><b>Website</b><i>metrogreens.ph</i></span>
+            </a>
+            <a class="mgs" href="https://www.instagram.com/metrogreens.ph/" target="_blank" rel="noopener" title="Instagram">
+              <span class="mgsi">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.3 1.2.4 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.4-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.3-2.4.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.3-1.2-.4-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.4.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.3 2.4-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.5a6.3 6.3 0 1 0 0 12.6 6.3 6.3 0 0 0 0-12.6Zm0 10.4a4.1 4.1 0 1 1 0-8.2 4.1 4.1 0 0 1 0 8.2Zm8-10.7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
+              </span><span class="mgst"><b>Instagram</b><i>@metrogreens.ph</i></span>
+            </a>
+            <a class="mgs" href="https://www.youtube.com/@metrogreen.ph1" target="_blank" rel="noopener" title="YouTube">
+              <span class="mgsi">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z"/></svg>
+              </span><span class="mgst"><b>YouTube</b><i>@metrogreen.ph1</i></span>
+            </a>
+            <a class="mgs" href="https://t.me/metr_greens" target="_blank" rel="noopener" title="Telegram">
+              <span class="mgsi">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.7 19.5c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L7.4 12.9l-4.5-1.4c-1-.3-1-1 .2-1.5L20.5 2.9c.8-.3 1.5.2 1.4 1.4Z"/></svg>
+              </span><span class="mgst"><b>Telegram</b><i>@metr_greens</i></span>
+            </a>
+          </div>
+        </div>
+
+
         <div class="tagline">
           <span class="tag">store site</span><span class="tag">product catalogue</span>
           <span class="tag">mobile app</span><span class="tag">hand-written 2023</span><span class="tag">real business</span>
@@ -472,9 +518,9 @@
       <div class="panel">
         <h3>See it before you click</h3>
         <a href="https://manila-farm-ph.netlify.app" target="_blank" rel="noopener" title="Open the calculator"
-           style="display:block;position:relative;width:100%;height:340px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--panel2)">
-          <iframe src="https://manila-farm-ph.netlify.app" title="Investment calculator preview" loading="lazy" scrolling="no"
-                  style="position:absolute;top:0;left:0;width:1440px;height:1020px;border:0;transform:scale(0.34);transform-origin:top left;pointer-events:none"></iframe>
+           style="display:block;position:relative;width:100%;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel2)">
+          <img src="img/calc-hero.jpg" alt="The calculator: invested 10M PHP, modelled proceeds 33.6M, IRR 32.8%, stress-test 97.3%, and where the money goes"
+               style="display:block;width:100%;height:auto">
           <span style="position:absolute;right:10px;bottom:10px;padding:7px 12px;border-radius:8px;background:var(--accent);color:#07130c;font:600 13px/1 var(--mono)">click to open ↗</span>
         </a>
         <div class="meter" style="margin-top:14px">
