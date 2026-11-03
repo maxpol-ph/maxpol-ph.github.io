@@ -137,15 +137,17 @@
     background:linear-gradient(180deg,#1b2129,#151a21)}
   .apph{font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
   .approw{display:flex;gap:10px;flex-wrap:wrap}
-  .appbtn{display:flex;align-items:center;gap:9px;flex:1 1 140px;padding:9px 12px;border-radius:10px;
-    border:1px solid #2b3440;background:#0f1319;text-decoration:none;
-    transition:border-color .15s,transform .15s,background .15s}
-  .appbtn:hover{border-color:#3a4655;background:#141a21;transform:translateY(-1px)}
-  .appbtn .appic{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;
-    background:rgba(255,255,255,.07);color:#e8edf3;font-size:12px}
-  .appbtn span+span{display:flex;flex-direction:column;gap:1px}
-  .appbtn b{font-size:12.5px;color:#e8edf3;font-weight:600}
-  .appbtn i{font-style:normal;font-size:10.5px;color:#93a1b1}
+  .appbtn{display:flex;align-items:center;gap:10px;flex:1 1 160px;padding:10px 14px;border-radius:12px;
+    border:1px solid rgba(255,255,255,.16);background:#f6f8f7;text-decoration:none;
+    box-shadow:0 4px 14px rgba(0,0,0,.35);
+    transition:transform .15s,box-shadow .15s,background .15s}
+  .appbtn:hover{text-decoration:none;background:#ffffff;transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(0,0,0,.5)}
+  .appbtn .appic{width:26px;height:26px;display:grid;place-items:center;flex:0 0 auto}
+  .appbtn .appic svg{width:23px;height:23px;display:block}
+  .appbtn span+span{display:flex;flex-direction:column;gap:0;line-height:1.15}
+  .appbtn b{font-size:13.5px;color:#0b0d10;font-weight:700;letter-spacing:-.01em}
+  .appbtn i{font-style:normal;font-size:10.5px;color:#5b6675;letter-spacing:.02em}
 
   /* соцсети Metro Greens - мягкий зелёный */
   .mgsoc{margin:18px 0 4px;padding:14px;border-radius:12px;
@@ -403,10 +405,10 @@
           <div class="apph">The same shop, as a phone app</div>
           <div class="approw">
             <a class="appbtn" href="https://play.google.com/store/apps/details?id=salesbox.me.metrogreens" target="_blank" rel="noopener">
-              <span class="appic">▶</span><span><b>Google Play</b><i>Android</i></span>
+              <span class="appic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00d0ff" d="M3.6 2.2 13.6 12 3.6 21.8c-.3-.2-.5-.6-.5-1.1V3.3c0-.5.2-.9.5-1.1Z"/><path fill="#ffd400" d="M16.9 8.6 5.4 2.1c-.4-.2-.9-.2-1.3 0l9.5 9.9 3.3-3.4Z"/><path fill="#ff3a44" d="M16.9 15.4 13.6 12 4.1 21.9c.4.2.9.2 1.3 0l11.5-6.5Z"/><path fill="#00f076" d="M20.4 10.6l-3.5-2-3.3 3.4 3.3 3.4 3.5-2c1.1-.6 1.1-2.2 0-2.8Z"/></svg></span><span><b>Google Play</b><i>Android app</i></span>
             </a>
             <a class="appbtn" href="https://apps.apple.com/ua/app/metro-greens/id6443599636" target="_blank" rel="noopener">
-              <span class="appic"></span><span><b>App Store</b><i>iPhone</i></span>
+              <span class="appic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0b0d10" d="M16.4 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.9-1.4-.1-2.8.8-3.5.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 3-.7 1.4 0 1.8.7 3 .7 1.2 0 2-1.1 2.8-2.2.9-1.3 1.3-2.6 1.3-2.6s-2.4-1-2.4-3.2ZM14.2 5.9c.6-.8 1-1.9.9-3-1 0-2.1.6-2.8 1.4-.6.7-1 1.8-.9 2.9 1.1.1 2.2-.5 2.8-1.3Z"/></svg></span><span><b>App Store</b><i>iPhone app</i></span>
             </a>
           </div>
         </div>
