@@ -131,6 +131,21 @@
     padding:26px 14px 11px;background:linear-gradient(180deg,transparent,rgba(4,6,9,.94))}
   .vidcard .vmeta b{font-size:13px;color:#e8edf3;font-weight:600}
   .vidcard .vmeta i{font-style:normal;font-size:11.5px;color:#93a1b1}
+
+  /* блок приложений в кейсе магазина */
+  .appblock{margin:16px 0 4px;padding:14px;border:1px solid #2b3440;border-radius:12px;
+    background:linear-gradient(180deg,#1b2129,#151a21)}
+  .apph{font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .approw{display:flex;gap:10px;flex-wrap:wrap}
+  .appbtn{display:flex;align-items:center;gap:9px;flex:1 1 140px;padding:9px 12px;border-radius:10px;
+    border:1px solid #2b3440;background:#0f1319;text-decoration:none;
+    transition:border-color .15s,transform .15s,background .15s}
+  .appbtn:hover{border-color:#3a4655;background:#141a21;transform:translateY(-1px)}
+  .appbtn .appic{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;
+    background:rgba(255,255,255,.07);color:#e8edf3;font-size:12px}
+  .appbtn span+span{display:flex;flex-direction:column;gap:1px}
+  .appbtn b{font-size:12.5px;color:#e8edf3;font-weight:600}
+  .appbtn i{font-style:normal;font-size:10.5px;color:#93a1b1}
 </style>
 </head>
 <body>
@@ -345,12 +360,13 @@
   <div class="wrap">
     <div class="case-head">
       <span class="num">CASE 04</span>
-      <h2>Microgreens farm: one page that sells, with video and live preview</h2>
+      <h2>Microgreens store: one page that sells, and a mobile app behind it</h2>
     </div>
     <p class="case-sub">
-      A real business, not a mockup: a one-page site for a microgreens farm in Metro Manila. The page has to do
-      two jobs at once - explain a product most people have never bought, and give a buyer a reason to trust it
-      in under ten seconds. So it carries a product story, a live video, and a price that is stated plainly.
+      A real business, not a mockup: the store front of a microgreens farm in Metro Manila. Built in 2023, before
+      any of the AI tooling I use now - straight hand-written HTML, a catalogue, and a checkout. It still does its
+      job: explain a product most people have never bought, state the price plainly, and take an order in two clicks.
+      Under it sits a native ordering app for both stores, so a customer can buy from the phone instead of the browser.
     </p>
 
     <div class="grid">
@@ -358,27 +374,32 @@
         <div class="live"><i></i>LIVE - metrogreens.ph</div>
         <ul class="clean">
           <li><b>One page, one decision.</b> What it is, who it is for, what it costs, how to order - no menu, no tabs, nothing to click twice.</li>
-          <li><b>Video above the fold.</b> A YouTube clip does the selling that text cannot: the product growing, being cut, being eaten.</li>
+          <li><b>App in both stores.</b> The same shop ships as a phone app - Google Play and App Store links sit in the footer, and the app is the same catalogue, not a stripped-down copy.</li>
           <li><b>Price stated in public.</b> Microgreens at a fixed per-gram price with cost per serving worked out, so the buyer compares food, not guesswork.</li>
           <li><b>Live preview on this page.</b> The thumbnail below is the actual site in an embedded frame - click it and you land on the real thing, not a screenshot that can go stale.</li>
           <li><b>Static, cheap, portable.</b> No CMS, no plugins, no monthly bill - it can move hosts in five minutes.</li>
         </ul>
 
-        <a class="vidcard" href="https://www.youtube.com/watch?v=p6MCwjquqZk" target="_blank" rel="noopener"
-           title="Vertical farming business model - 18 min walkthrough">
-          <img src="https://img.youtube.com/vi/p6MCwjquqZk/maxresdefault.jpg" alt="Metro Greens - business model walkthrough" loading="lazy">
-          <span class="vplay" aria-hidden="true">▶</span>
-          <span class="vmeta"><b>The business in 18 minutes</b><i>four parts: offer, numbers, systems, stress test</i></span>
-        </a>
+        <div class="appblock">
+          <div class="apph">The same shop, as a phone app</div>
+          <div class="approw">
+            <a class="appbtn" href="https://play.google.com/store/apps/details?id=salesbox.me.metrogreens" target="_blank" rel="noopener">
+              <span class="appic">▶</span><span><b>Google Play</b><i>Android</i></span>
+            </a>
+            <a class="appbtn" href="https://apps.apple.com/ua/app/metro-greens/id6443599636" target="_blank" rel="noopener">
+              <span class="appic"></span><span><b>App Store</b><i>iPhone</i></span>
+            </a>
+          </div>
+        </div>
 
         <div class="cta" style="margin:22px 0 6px">
           <a class="btn primary" href="https://metrogreens.ph/" target="_blank" rel="noopener">Open the live site</a>
-          <a class="btn" href="https://www.youtube.com/watch?v=p6MCwjquqZk" target="_blank" rel="noopener">Watch on YouTube</a>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=salesbox.me.metrogreens" target="_blank" rel="noopener">Get the app</a>
         </div>
 
         <div class="tagline">
-          <span class="tag">one-page site</span><span class="tag">product story</span>
-          <span class="tag">YouTube embed</span><span class="tag">static hosting</span><span class="tag">real business</span>
+          <span class="tag">store site</span><span class="tag">product catalogue</span>
+          <span class="tag">mobile app</span><span class="tag">hand-written 2023</span><span class="tag">real business</span>
         </div>
       </div>
 
@@ -393,7 +414,7 @@
         <div class="meter" style="margin-top:14px">
           <div class="row"><span>Pages</span><b>1</b></div>
           <div class="row"><span>Server needed</span><b>no</b></div>
-          <div class="row"><span>Video</span><b>YouTube channel</b></div>
+          <div class="row"><span>App</span><b>Android + iOS</b></div>
           <div class="row"><span>Status</span><b>live</b></div>
         </div>
       </div>
@@ -402,6 +423,72 @@
     <p class="note">
       Why this case is here: the other three prove I can build systems. This one proves the system can sell
       something to a stranger, at a stated price, without me in the room.
+    </p>
+  </div>
+</section>
+
+<section id="case-5">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="num">CASE 05</span>
+      <h2>Investment round: a calculator the investor can break himself</h2>
+    </div>
+    <p class="case-sub">
+      The same farm, but the page is not selling greens - it is raising money. Round one: 10 million PHP for 20%
+      of the company, a six-month validation round with 10 racks and about 25 kg of microgreens a day. The rule
+      was simple: no promise on the page that the visitor cannot change himself. Every number is an input, and the
+      whole model recalculates in the browser, including the numbers that make the deal look worse.
+    </p>
+
+    <div class="grid">
+      <div>
+        <div class="live"><i></i>LIVE - manila-farm-ph.netlify.app</div>
+        <ul class="clean">
+          <li><b>An input, not a claim.</b> Racks, kilos, price per gram, salaries, rent, loan rate - all editable. Change one and revenue, EBITDA, cash flow and the point where cash runs out all move with it.</li>
+          <li><b>The arithmetic is visible.</b> Revenue is kilos times price, stated line by line, so an analyst can rebuild the model in a spreadsheet instead of trusting a slide.</li>
+          <li><b>A stress test, not a best case.</b> Six scenarios and 2,000 randomised runs; in the round-one case the farm survives 97.3% of them. The page shows the failures too.</li>
+          <li><b>Break-even in month 7.</b> Modelled over 60 months: 33.6M PHP returned on the cheque, 3.4x, IRR 32.8% a year. Revenue 21.3M / 72.7M / 85.5M PHP over three years, EBITDA 3.8M / 24.3M / 30.3M.</li>
+          <li><b>Honest about the clock.</b> The farms ran 2019-2023 and paused on working capital, not demand - the page says that in plain words instead of hiding it.</li>
+        </ul>
+
+        <a class="vidcard" href="https://www.youtube.com/watch?v=JMaqBbtpZ18" target="_blank" rel="noopener"
+           title="Vertical farming business model in Manila - full walkthrough">
+          <img src="https://img.youtube.com/vi/JMaqBbtpZ18/maxresdefault.jpg" alt="Business plan walkthrough - the model, the numbers, the stress test" loading="lazy">
+          <span class="vplay" aria-hidden="true">▶</span>
+          <span class="vmeta"><b>The business plan in 18 minutes</b><i>the offer, the numbers, the systems, the stress test</i></span>
+        </a>
+
+        <div class="cta" style="margin:22px 0 6px">
+          <a class="btn primary" href="https://manila-farm-ph.netlify.app" target="_blank" rel="noopener">Open the calculator</a>
+          <a class="btn" href="https://www.youtube.com/watch?v=JMaqBbtpZ18" target="_blank" rel="noopener">Watch the walkthrough</a>
+        </div>
+
+        <div class="tagline">
+          <span class="tag">investment page</span><span class="tag">live model</span>
+          <span class="tag">sensitivity test</span><span class="tag">static hosting</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>See it before you click</h3>
+        <a href="https://manila-farm-ph.netlify.app" target="_blank" rel="noopener" title="Open the calculator"
+           style="display:block;position:relative;width:100%;height:340px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--panel2)">
+          <iframe src="https://manila-farm-ph.netlify.app" title="Investment calculator preview" loading="lazy" scrolling="no"
+                  style="position:absolute;top:0;left:0;width:1440px;height:1020px;border:0;transform:scale(0.34);transform-origin:top left;pointer-events:none"></iframe>
+          <span style="position:absolute;right:10px;bottom:10px;padding:7px 12px;border-radius:8px;background:var(--accent);color:#07130c;font:600 13px/1 var(--mono)">click to open ↗</span>
+        </a>
+        <div class="meter" style="margin-top:14px">
+          <div class="row"><span>Round one</span><b>10M PHP / 20%</b></div>
+          <div class="row"><span>Break-even</span><b>month 7</b></div>
+          <div class="row"><span>IRR</span><b>32.8%</b></div>
+          <div class="row"><span>Status</span><b>live</b></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="note">
+      Why this case is here: the farm is paused, and this is the honest version of that - a page that shows the
+      numbers, lets you change them, and still makes sense when you try to break it.
     </p>
   </div>
 </section>
